@@ -1,3 +1,6 @@
+import pygame
+
+
 class Sprite:
     X_change = 0
     Y_change = 10
@@ -23,12 +26,17 @@ class Bullet(Sprite):
             self.y = 480
             self.prepared = True
 
+    def check_collision(self, enemy):
+        rect = self.sprite.get_rect()
+        enemy_rect = enemy.sprite.get_rect()
+        return pygame.sprite.collide_rect(rect, enemy_rect)
+
 
 class Player(Sprite):
-    X, Y = (370, 480)
+    x, y = (370, 480)
 
     def move(self):
-        self.blit((self.X, self.Y), )
+        self.blit((self.x, self.y), )
 
 
 class Enemy(Sprite):

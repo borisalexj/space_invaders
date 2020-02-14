@@ -32,7 +32,7 @@ def run():
     running = True
     game_over = False
     while running:
-        clock.tick(80)
+        clock.tick(50)
 
         if not game_over:
             screen.blit(background, (0, 0))
@@ -49,24 +49,24 @@ def run():
                     player.X_change = 5
                 if event.key == pygame.K_SPACE:
                     if bullet.prepared:
-                        # Get the current x cordinate of the spaceship
-                        bullet.x = player.X
+                        # Get the current x coordinate of the spaceship
+                        bullet.x = player.x
                         bullet.move()
 
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                     player.X_change = 0
 
-        player.X += player.X_change
-        if player.X <= 0:
-            player.X = 0
-        elif player.X >= 736:
-            player.X = 736
+        player.x += player.X_change
+        if player.x <= 0:
+            player.x = 0
+        elif player.x >= 736:
+            player.x = 736
 
         for enemy in enemies:
 
             ######## Game Over ############
-            if enemy.y > 160:
+            if enemy.y > 440:
                 game_over = True
                 enemy.y = 2000
                 break
